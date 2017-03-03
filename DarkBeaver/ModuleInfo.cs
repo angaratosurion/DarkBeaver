@@ -27,7 +27,7 @@ namespace DarkBeaver
         {
             get
             {
-                return "https://github.com/angaratosurion/BlackOwl";
+                return "https://github.com/angaratosurion/DarkBeaver";
             }
         }
 

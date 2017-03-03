@@ -1,6 +1,0 @@
-[submodule "BlackCogs"]
-	path = BlackCogs
-	url = https://github.com/angaratosurion/BlackCogs
-[submodule "MultiPlex"]
-	path = MultiPlex
-	url = https://github.com/angaratosurion/MultiPlex

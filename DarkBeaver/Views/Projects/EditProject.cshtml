@@ -1,0 +1,42 @@
+﻿@model  DarkBeaver.ViewModels.ViewProject
+@{
+    ViewBag.Title = "Edit Project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Project</h2>
+@*<p> Wiki Was Last Updated at  @Html.DisplayFor(model => model.UpdatedAt)</p>*@
+<table class="table">
+    <tr>
+        
+@{
+
+    var id = Model.Id;/* this.Request.Params.Get("id");*/
+    if (id == null)
+    {
+        id = ViewBag.id;
+    }
+
+   <td> @Html.ActionLink("Basic Info","EditBasicInfo", new { id = id }, new { @class = "btn btn-default" })</td>    
+   <td> @Html.ActionLink("News", "GetNewsByDarkBeaverId", "ProjectNews", new { id = id },
+       new { @class = "btn btn-default" })</td>
+   <td> @Html.ActionLink("Releases", "GetFileReleasesByProjectId", "FileRelease", new { id = id }, new { @class = "btn btn-default" })</td>
+}
+
+</tr>
+    <tr>
+
+        @{ <td> @Html.ActionLink("Users", "GetProjectUsers", new { id = id }, 
+                new { @class = "btn btn-default" })</td>
+                <td>
+                    @*@Html.ActionLink("Moderator invitations", "GetModeratorInvitesByWiki", new { id = id },
+                new { @class = "btn btn-default" })*@
+                </td>
+                <td>
+                    @Html.ActionLink("Files", "GetFileByProjectId", "ProjectFiles", new { id = id },
+                new { @class = "btn btn-default" })
+                </td>
+        }
+    </tr>
+
+</table>

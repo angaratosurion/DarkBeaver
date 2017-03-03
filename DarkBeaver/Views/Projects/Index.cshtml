@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DarkBeaver.ViewModels.ViewProject>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WikiName)
+        </th>
+         
+        <th>
+            @Html.DisplayNameFor(model => model.Admininstrator)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WikiName)
+        </td>
+         
+        <td>
+            @Html.DisplayFor(modelItem => item.Admininstrator.UserName)
+        </td>
+        <td>@{ var proj = item.ExportToModel();
+            BlackCogs.Data.Models.ApplicationUser usr = null;
+            if (User.Identity.Name != "")
+            {
+                usr = Statics.usrmng.GetUser(User.Identity.Name);
+            }
+            }
+         @if (Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
+         {
+            @Html.ActionLink("Edit", "EditProject", new { id = item.Id }) @Html.Raw(" | ")
+         }
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
+        @if (Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
+        {  @Html.Raw(" | ")
+           @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        }
+        </td>
+    </tr>
+}
+
+</table>

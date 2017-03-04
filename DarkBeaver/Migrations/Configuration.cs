@@ -1,6 +1,7 @@
 namespace DarkBeaver.Migrations
 {
     using System.Data.Entity.Migrations;
+    using System.Linq;
     using BlackCogs.Data;
     using BlackCogs.Data.Models;
     using DarkBeaver.Models;
@@ -39,21 +40,36 @@ namespace DarkBeaver.Migrations
 
             var userStore = new UserStore<ApplicationUser>(context);
             var mngr = new UserManager<ApplicationUser>(userStore);
+            IdentityRole role = new IdentityRole("Administrators");
+            context.Roles.AddOrUpdate(r => r.Name, role);
 
-            //     if (!context.Users.Any(u => u.UserName == "admin"))
+            //var passwordHash = new PasswordHasher();
+            //string password = passwordHash.HashPassword("Adm!n0");
+            //context.Users.AddOrUpdate(u => u.UserName,
+            //    new ApplicationUser
+            //    {
+            //        UserName = "admin@localhost.com",
+            //        PasswordHash = password,
+            //        Email= "admin@localhost.com"
+            //        //   PhoneNumber = "08869879"
+
+            //    });
+
+
+
+
+            context.SaveChanges();
+            ApplicationUser adm = new ApplicationUser();
+
+            adm.Email = "admin@localhost.com";
+            adm.UserName = adm.Email;
+            adm.DisplayName = "Admin";
+            mngr.Create(adm, "Adm!n0");
+            IdentityRole adrol = context.Roles.First(x => x.Name == "Administrators");
+            adm = mngr.FindByEmail("admin@localhost.com");
+            if (adm != null)
             {
-
-                var admin = new ApplicationUser { UserName = "admin", Email = "admin@loclahost" };
-
-
-
-                mngr.Create(admin, "Adm!n0");
-
-                context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = "Administrators" });
-                //context.Users.AddOrUpdate(admin);
-
-                context.SaveChanges();
-
+                mngr.AddToRole(adm.Id, adrol.Name);
             }
 
             context.Configuration.AutoDetectChangesEnabled = true;

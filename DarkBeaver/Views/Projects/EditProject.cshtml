@@ -18,7 +18,7 @@
     }
 
    <td> @Html.ActionLink("Basic Info","EditBasicInfo", new { id = id }, new { @class = "btn btn-default" })</td>    
-   <td> @Html.ActionLink("News", "GetNewsByDarkBeaverId", "ProjectNews", new { id = id },
+   <td> @Html.ActionLink("News", "GetNewsByProjectsId", "ProjectNews", new { id = id },
        new { @class = "btn btn-default" })</td>
    <td> @Html.ActionLink("Releases", "GetFileReleasesByProjectId", "FileRelease", new { id = id }, new { @class = "btn btn-default" })</td>
 }

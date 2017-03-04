@@ -1,0 +1,90 @@
+﻿@model MultiPlex.Core.Data.ViewModels.ViewWikiModInvites
+
+@{
+    ViewBag.Title = "Wiki Moderator Invites";
+}
+
+<h2> @ViewBag.Title</h2>
+<h4>@Html.DisplayNameFor(model => model.Wiki)</h4>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Wiki.WikiTitle)
+    </dt>
+
+    <dd>      
+       
+        @Html.DisplayFor(model => model.Wiki.WikiTitle)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Wiki.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Wiki.Name)
+    </dd>   
+    <dt>
+        @Html.DisplayNameFor(model => model.Wiki.Administrator)
+    </dt>
+
+    <dd>
+       @Html.ActionLink(Model.Wiki.Administrator.DisplayName, "Details", "WikiUser",
+                    new { usernameid = Model.Wiki.Administrator.Id }, htmlAttributes: null)
+    </dd>
+
+    
+
+</dl>
+<hr/>
+<h4>@Html.DisplayNameFor(model => model.ModeratorInvites)</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeratorInvites[0].Moderator.UserName)
+            
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeratorInvites[0].Moderator.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeratorInvites[0].Moderator.PhoneNumber)
+        </th>
+
+    </tr>
+     @{ var mods = Model.ModeratorInvites;}
+    @if(mods!=null)
+    {
+        foreach (var item in Model.ModeratorInvites)
+        {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.UserName)*@
+                @Html.ActionLink(item.Moderator.DisplayName, "Details", "WikiUser",
+         new { usernameid = item.Moderator.Id }, htmlAttributes: null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moderator.Email)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moderator.PhoneNumber)
+
+            </td>
+            <td>
+                
+               @Html.ActionLink("Details", "GetModeratorInviteDetails", new { wikiname = item.Wiki.Name,
+               id = item.Id }) 
+            </td>
+        </tr>
+    }
+    }
+    else
+    {
+       <p> There is no requests for Moderators</p>   
+     }
+    
+
+</table>
+<div>
+    @Html.ActionLink("Back to Wiki Administration", "EditWiki", new { wikiname = Model.Wiki.Name })
+</div>

@@ -9,7 +9,7 @@ using BlackCogs.Interfaces;
 
 namespace DarkBeaver
 {
-    [Export(typeof(IRouteRegistrar)), ExportMetadata("Order", 99)]
+    [Export(typeof(IRouteRegistrar)), ExportMetadata("Order", 999)]
     public class RouteConfig : IRouteRegistrar
     {
         public void RegisterIgnoreRoutes(RouteCollection routes)
@@ -24,7 +24,7 @@ namespace DarkBeaver
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Projects", action = "Index", id = UrlParameter.Optional }
             );
             //MultiPlex Wiki
             routes.MapRoute(

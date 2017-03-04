@@ -1,0 +1,62 @@
+﻿@model IEnumerable< MultiPlex.Core.Data.ViewModels.ViewWiki>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WikiTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WikiTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+           
+                @{var wk = item.ExportToModel();
+
+                    BlackCogs.Data.Models.ApplicationUser usr = null;
+                    if (User.Identity.Name != "")
+                    {
+                        usr = CommonTools.usrmng.GetUser(User.Identity.Name);
+                    }
+                }
+                @if (CommonTools.usrmng.UserHasAccessToWiki(usr, wk, false)==true)
+                {
+                    @Html.ActionLink("Edit", "EditWiki", new { wikiname = item.Name })@Html.Raw(" | ")
+                }
+
+                    @Html.ActionLink("Details", "Details", new { wikiname = item.Name }) 
+              @if (CommonTools.usrmng.UserHasAccessToWiki(usr, wk, false)==true)
+              { @Html.Raw(" | ")
+                    @Html.ActionLink("Delete", "Delete", new { wikiname = item.Name })
+                }
+
+                    
+                   
+           
+        </td>
+       
+    </tr>
+}
+   
+
+</table>

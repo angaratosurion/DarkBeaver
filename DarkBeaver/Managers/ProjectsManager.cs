@@ -37,7 +37,7 @@ namespace DarkBeaver.Managers
                     ApplicationUser adm = Statics.usrmng.GetUser(username);
                     if (adm != null)
                     {
-                        ap = this.db.DarkBeaver.Where(x => x.Admininstrator == adm.Id).ToList();
+                        ap = this.db.Projects.Where(x => x.Admininstrator == adm.Id).ToList();
                     }
 
                 }
@@ -89,7 +89,7 @@ namespace DarkBeaver.Managers
             {
                 List<Project> ap = null;
 
-                ap = db.DarkBeaver.ToList();
+                ap = db.Projects.ToList();
                 return ap;
 
             }
@@ -155,7 +155,7 @@ namespace DarkBeaver.Managers
                        //   db.Configuration.ValidateOnSaveEnabled = false;
                        // db.Configuration.LazyLoadingEnabled = true;
                         //Statics.usersprojmngr.AddNewProjectToUser(admin, project);
-                        db.DarkBeaver.Add(project);
+                        db.Projects.Add(project);
                       
                         
                         db.SaveChanges();
@@ -189,7 +189,7 @@ namespace DarkBeaver.Managers
 
                  if ( id >=0)
                 {
-                  ap = db.DarkBeaver.Find(id);
+                  ap = db.Projects.Find(id);
                 }
 
 
@@ -237,7 +237,7 @@ namespace DarkBeaver.Managers
                         this.chgMngr.DeleteByProjectId(id);
                         this.newMngr.DeleteByProjectId(id);
 
-                        db.DarkBeaver.Remove(proj);
+                        db.Projects.Remove(proj);
                         db.SaveChanges();
                         FileManager.DeleteDirectory(path);
                     }

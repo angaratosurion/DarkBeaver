@@ -12,7 +12,7 @@
     </dt>
 
     <dd>      
-        @Html.ActionLink(Model.Administrator.UserName, "Details", "DarkBeaverUsers",
+        @Html.ActionLink(Model.Administrator.UserName, "Details", "ProjectsUsers",
                     new { username = Model.Administrator.UserName },htmlAttributes:null)
     </dd>
 
@@ -55,7 +55,7 @@
         <tr>
             <td>
                 @*@Html.DisplayFor(modelItem => item.UserName)*@
-                @Html.ActionLink(item.UserName, "Details", "DarkBeaverUsers",
+                @Html.ActionLink(item.UserName, "Details", "ProjectsUsers",
                     new { username = item.UserName }, htmlAttributes: null)
             </td>
             <td>

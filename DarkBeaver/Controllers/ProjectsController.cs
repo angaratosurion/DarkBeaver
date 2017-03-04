@@ -14,9 +14,9 @@ using DarkBeaver.ViewModels;
 
 namespace DarkBeaver.Controllers
 {
-    [Export("DarkBeaver", typeof(IController))]
+    [Export("Projects", typeof(IController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class DarkBeaverController : Controller
+    public class ProjectsController : Controller
     {
         // private ApplicationDbContext db = new ApplicationDbContext();
         DarkBeaverManager mngr = Statics.mngr;

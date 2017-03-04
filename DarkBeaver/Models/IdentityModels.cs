@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using BlackCogs.Data;
 using BlackCogs.Data.Models;
+using MultiPlex.Core.Data.Models;
 
 namespace DarkBeaver.Models
 {
@@ -66,7 +67,21 @@ namespace DarkBeaver.Models
             //  .WithOptional()
             //  .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<WikiTitle>()
+             .HasRequired(t => t.Wiki)
+             .WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<WikiTitle>()
+                .HasKey(p => p.TitleId);
 
+
+            modelBuilder.Entity<WikiFile>()
+                .HasRequired(f => f.Wiki)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<WikiModInvitations>()
+               .HasRequired(f => f.Wiki)
+               .WithMany()
+               .WillCascadeOnDelete(false);
 
 
 
@@ -81,14 +96,19 @@ namespace DarkBeaver.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Project> DarkBeaver { get; set; }
+        public System.Data.Entity.DbSet<Project> Projects { get; set; }
         public System.Data.Entity.DbSet<ProjectNews> ProjectNews { get; set; }
         public System.Data.Entity.DbSet<ProjectFiles> ProjectFiles { get; set; }
         public System.Data.Entity.DbSet<FileReleases> FileReleases { get; set; }
         public DbSet<ChangeLog> ChangeLogs { get; set; }
         public DbSet<Bugs> Bugs { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
-        
+        public IDbSet<WikiContent> WikiContent { get; set; }
+        public IDbSet<WikiTitle> WikiTitle { get; set; }
+        public IDbSet<Wiki> Wikis { get; set; }
+        public IDbSet<WikiCategory> Categories { get; set; }
+        public IDbSet<WikiFile> WikiFiles { get; set; }
+        public IDbSet<WikiModInvitations> ModInvites { get; set; }
 
 
 

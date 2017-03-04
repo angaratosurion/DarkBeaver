@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - @BlackCogs.Bootstrapper.GetApplicationName("DarkBeaver")</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,13 +17,49 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(BlackCogs.Bootstrapper.GetApplicationName("DarkBeaver"), "Index", "Home",
+               new { area = "" }, new { @class = "navbar-brand" })
             </div>
+            <div id="header">
+                @if (IsSectionDefined("head"))
+                {
+                    @RenderSection("head");
+
+                }
+            </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @{
+                        var verbs = BlackCogs.Bootstrapper.GetVerbsForCategory("Navigation");
+                        Microsoft.AspNet.Identity.EntityFramework.IdentityRole rolusr = null;
+
+                        if (User != null && User.Identity != null & User.Identity.Name != "")
+                        {
+                            var rols = DarkBeaver.CommonTools.usrmng.GetRolesOfUser(User.Identity.Name);
+                            if (rols != null)
+                            {
+                                rolusr = rols.FirstOrDefault(x => x.Name == "Administrators");
+                            }
+
+                        }
+                        foreach (var verb in verbs)
+                        {
+                            if (verb.isAdminPalnel == true && rolusr != null)
+                            {
+                                <li> @Html.ActionLink(verb.Name, verb.Action, verb.Controller)</li>
+                            }
+                            else if (verb.isAdminPalnel == false)
+                            {
+                                <li> @Html.ActionLink(verb.Name, verb.Action, verb.Controller)</li>
+                            }
+                        }
+
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +69,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - @BlackCogs.Bootstrapper.GetApplicationName("DarkBeaver")</p>
         </footer>
     </div>
 

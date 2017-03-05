@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DarkBeaver.ViewModels.ViewProject>
 
-@{
-    ViewBag.Title = "Index";
+@{ 
+
 }
 
 <h2>Index</h2>
@@ -46,15 +46,15 @@
             BlackCogs.Data.Models.ApplicationUser usr = null;
             if (User.Identity.Name != "")
             {
-                usr = Statics.usrmng.GetUser(User.Identity.Name);
+                usr = DarkBeaver.Statics.usrmng.GetUser(User.Identity.Name);
             }
             }
-         @if (Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
+         @if (DarkBeaver.Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
          {
             @Html.ActionLink("Edit", "EditProject", new { id = item.Id }) @Html.Raw(" | ")
          }
             @Html.ActionLink("Details", "Details", new { id=item.Id })
-        @if (Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
+        @if (DarkBeaver.Statics.usrmng.UserHasAccessToProject(usr, proj, false) == true)
         {  @Html.Raw(" | ")
            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         }

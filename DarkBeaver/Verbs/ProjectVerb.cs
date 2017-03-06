@@ -18,7 +18,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                return "DarkBeaver";
+                return "Projects";
             }
         }
 
@@ -26,7 +26,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                return "Handles DarkBeaver";
+                return "Handles Projects";
             }
         }
 
@@ -42,7 +42,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                return "DarkBeaver";
+                return "Projects";
             }
         }
         public string Moduledescription

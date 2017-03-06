@@ -17,6 +17,12 @@ namespace DarkBeaver
             try
             {
                 base.Application_Start();
+
+                AreaRegistration.RegisterAllAreas();
+                FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+                //RouteConfig.RegisterRoutes(RouteTable.Routes);
+                BundleConfig.RegisterBundles(BundleTable.Bundles);
+                BootStrap();
             }
             catch (Exception ex)
             {

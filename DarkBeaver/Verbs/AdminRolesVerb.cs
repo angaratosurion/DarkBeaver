@@ -23,7 +23,7 @@ namespace DarkBeaver .Verbs
         {
             get
             {
-                return "DarkBeaverUser";
+                return "ProjectUser";
             }
         }
 

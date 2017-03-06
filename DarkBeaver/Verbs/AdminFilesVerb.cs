@@ -24,7 +24,7 @@ namespace DarkBeaver .Verbs
         {
             get
             {
-                return "DarkBeaverFile";
+                return "ProjectFile";
             }
         }
 

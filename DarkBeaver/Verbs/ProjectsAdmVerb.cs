@@ -18,7 +18,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                return "DarkBeaver";
+                return "Projects";
             }
         }
 
@@ -26,7 +26,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                return "Here you Administrage the Existing DarkBeaver s";
+                return "Here you Administrage the Existing Projects";
             }
         }
 

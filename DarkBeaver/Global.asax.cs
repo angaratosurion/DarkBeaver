@@ -30,5 +30,11 @@ namespace DarkBeaver
                 CommonTools.ErrorReporting(ex);
             }
         }
+        protected void Application_Error()
+        {
+
+            base.Application_Error();
+
+        }
     }
 }

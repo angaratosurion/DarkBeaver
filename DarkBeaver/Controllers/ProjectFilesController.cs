@@ -12,7 +12,7 @@ using DarkBeaver.Models;
 
 namespace DarkBeaver.Controllers
 {
-    [Export("ProjectFiles", typeof(IController))]
+    [Export("ProjectFile", typeof(IController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class ProjectFilesController : Controller
     {

@@ -49,7 +49,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                Info inf = new Info();
+                DarkBeaverInfo inf = new DarkBeaverInfo();
                 return inf.Description;
             }
         }
@@ -58,7 +58,7 @@ namespace DarkBeaver.Verbs
         {
             get
             {
-                Info inf = new Info();
+                DarkBeaverInfo inf = new DarkBeaverInfo();
                 return inf.Name;
             }
         }

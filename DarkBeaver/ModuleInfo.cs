@@ -4,8 +4,8 @@ using BlackCogs.Interfaces;
 
 namespace DarkBeaver
 {
-    [Export(typeof(IModuleInfo))]
-    public class Info : IModuleInfo
+    [Export(typeof(IModuleInfo)), ExportMetadata("ID", "1")]
+    public class DarkBeaverInfo : IModuleInfo
     {
         public string Description
         {

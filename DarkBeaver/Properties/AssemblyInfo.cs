@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using BlackCogs.Attributes.Assembly;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -33,3 +34,7 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("0.0.4.2")]
 [assembly: AssemblyFileVersion("0.0.4.2")]
+
+
+[assembly: ModuleInfoAssemblyWebSite("http://pariskoutsioukis.net/blog/")]
+[assembly: ModuleInfoAssemblySourceCode("https://github.com/angaratosurion/DarkBeaver")]

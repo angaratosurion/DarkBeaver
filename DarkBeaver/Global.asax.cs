@@ -22,7 +22,7 @@ namespace DarkBeaver
                 FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
                 //RouteConfig.RegisterRoutes(RouteTable.Routes);
                 BundleConfig.RegisterBundles(BundleTable.Bundles);
-                BootStrap();
+              BootStrap();
             }
             catch (Exception ex)
             {

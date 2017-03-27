@@ -363,23 +363,17 @@
     <Content Include="Views\Projects\EditProject.cshtml" />
     <Content Include="Views\Projects\GetProjectUsers.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\ProjectsUser\AddUserToRole.cshtml" />
-    <Content Include="Views\ProjectsUser\CreateNewRole.cshtml" />
-    <Content Include="Views\ProjectsUser\CreateNewUser.cshtml" />
-    <Content Include="Views\ProjectsUser\DeleteRole.cshtml" />
-    <Content Include="Views\ProjectsUser\DeleteUser.cshtml" />
-    <Content Include="Views\ProjectsUser\Details.cshtml" />
-    <Content Include="Views\ProjectsUser\FullDetails.cshtml" />
-    <Content Include="Views\ProjectsUser\GetRoles.cshtml" />
-    <Content Include="Views\ProjectsUser\Index.cshtml" />
-    <Content Include="Views\ProjectsUser\RemoveUserFromRole.cshtml" />
-    <Content Include="Views\ProjectsUser\RoleDetails.cshtml" />
-    <Content Include="Views\FileRelease\Create.cshtml" />
-    <Content Include="Views\FileRelease\Delete.cshtml" />
-    <Content Include="Views\FileRelease\Details.cshtml" />
-    <Content Include="Views\FileRelease\Edit.cshtml" />
-    <Content Include="Views\FileRelease\GetFileReleasesByProjectId.cshtml" />
-    <Content Include="Views\FileRelease\Index.cshtml" />
+    <Content Include="Views\ProjectsUsers\AddUserToRole.cshtml" />
+    <Content Include="Views\ProjectsUsers\CreateNewRole.cshtml" />
+    <Content Include="Views\ProjectsUsers\CreateNewUser.cshtml" />
+    <Content Include="Views\ProjectsUsers\DeleteRole.cshtml" />
+    <Content Include="Views\ProjectsUsers\DeleteUser.cshtml" />
+    <Content Include="Views\ProjectsUsers\Details.cshtml" />
+    <Content Include="Views\ProjectsUsers\FullDetails.cshtml" />
+    <Content Include="Views\ProjectsUsers\GetRoles.cshtml" />
+    <Content Include="Views\ProjectsUsers\Index.cshtml" />
+    <Content Include="Views\ProjectsUsers\RemoveUserFromRole.cshtml" />
+    <Content Include="Views\ProjectsUsers\RoleDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

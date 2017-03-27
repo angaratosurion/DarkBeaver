@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+@using BlackCogs.Data.Models;
+@using BlackCogs.Managers;
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,7 +9,12 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @{ BlackCogsUserManager blusr = new BlackCogsUserManager();
+
+                    ApplicationUser user = blusr.GetUser(User.Identity.GetUserName());
+                }
+            @Html.ActionLink("Hello " + user.DisplayName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

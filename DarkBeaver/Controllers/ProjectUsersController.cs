@@ -15,7 +15,7 @@ using System.Net;
 
 namespace DarkBeaver.Controllers
 {
-    [Export("ProjectUser", typeof(IController))]
+    [Export("ProjectUsers", typeof(IController))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [Authorize]
    public class ProjectUsersController :  BlackCogs.Controllers.UserController    

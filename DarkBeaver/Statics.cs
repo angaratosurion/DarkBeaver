@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
  
 using DarkBeaver.Managers;
-using DarkBeaver.Models;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver
 {
@@ -17,7 +17,7 @@ namespace DarkBeaver
         #region Manager of DarkBeaver
         public static ReleasesManager relmngr = new ReleasesManager();
         public static BugManager bugmngr = new BugManager();
-        public static DarkBeaverManager mngr = new DarkBeaverManager();
+        public static ProjectsManager mngr = new ProjectsManager();
         public static ProjectFileManager projfilmngr = new ProjectFileManager();
         public static ChangeLogManager chgMngr = new ChangeLogManager();
         public static ProjectNewsManager newMngr = new ProjectNewsManager();

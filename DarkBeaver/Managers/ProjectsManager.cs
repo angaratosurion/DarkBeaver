@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlackCogs;
 using BlackCogs.Data.Models;
-using DarkBeaver.Managers;
 using MultiPlex.Core.Data.Models;
 //using MultiPlex.Core.Managers;
-using DarkBeaver.Models;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Managers
 {
-    public class DarkBeaverManager
+    public class ProjectsManager
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         ProjectUserManager usrmng = Statics.usrmng;

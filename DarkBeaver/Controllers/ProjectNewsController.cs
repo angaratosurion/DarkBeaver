@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DarkBeaver.Managers;
-using DarkBeaver.Models;
+using DarkBeaver.Data.ViewModels;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Controllers
 {
@@ -21,7 +17,17 @@ namespace DarkBeaver.Controllers
         // GET: ProjectNews
         public ActionResult Index()
         {
-            return View(mngr.List());
+
+            List<ViewProjectNews> vlist = new List<ViewProjectNews>();
+            List<ProjectNews> list = mngr.List();
+            foreach( var v in list)
+            {
+                ViewProjectNews vl = new ViewProjectNews();
+                vl.ImportFromModel(v);
+                vlist.Add(vl);
+
+            }
+            return View(vlist);
         }
 
         // GET: ProjectNews/Details/5
@@ -36,17 +42,35 @@ namespace DarkBeaver.Controllers
             {
                 return HttpNotFound();
             }
-            return View(projectNews);
+            ViewProjectNews vl = new ViewProjectNews();
+            vl.ImportFromModel(projectNews);
+          
+            return View(vl);
         }
-        public ActionResult GetNewsByDarkBeaverId(int? id)
+        public ActionResult GetNewsByProjectId(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var projectNews = mngr.ListByProjectId(id);
-           
-            return View(projectNews.ToList());
+            List<ViewProjectNews> vlist = new List<ViewProjectNews>();
+            List<ProjectNews> list = projectNews;
+            if (list != null)
+            {
+
+            
+            foreach (var v in list)
+            {
+                ViewProjectNews vl = new ViewProjectNews();
+                vl.ImportFromModel(v);
+                vlist.Add(vl);
+
+            }
+
+        }
+            return View(vlist);
         }
 
         // GET: ProjectNews/Create
@@ -61,12 +85,12 @@ namespace DarkBeaver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Published,content")] ProjectNews projectNews)
+        public ActionResult Create([Bind(Include = "Id,Title,Published,content")] ViewProjectNews projectNews)
         {
             if (ModelState.IsValid)
             { //this.User.Identity
                 
-                this.mngr.Create(projectNews, this.User.Identity.Name);
+                this.mngr.Create(projectNews.ExportToModel(), this.User.Identity.Name);
 
                 return RedirectToAction("Index");
             }
@@ -87,7 +111,10 @@ namespace DarkBeaver.Controllers
             {
                 return HttpNotFound();
             }
-            return View(projectNews);
+            ViewProjectNews vl = new ViewProjectNews();
+            vl.ImportFromModel(projectNews);
+
+            return View(vl);
         }
 
         // POST: ProjectNews/Edit/5
@@ -95,11 +122,11 @@ namespace DarkBeaver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Published,content,RowVersion")] ProjectNews projectNews)
+        public ActionResult Edit([Bind(Include = "Id,Title,Published,content,RowVersion")] ViewProjectNews projectNews)
         {
             if (ModelState.IsValid)
             {
-                projectNews = mngr.Edit(projectNews);
+                projectNews.ImportFromModel(mngr.Edit(projectNews.ExportToModel()));
                 return RedirectToAction("Index");
             }
             return View(projectNews);
@@ -118,7 +145,10 @@ namespace DarkBeaver.Controllers
             {
                 return HttpNotFound();
             }
-            return View(projectNews);
+            ViewProjectNews vl = new ViewProjectNews();
+            vl.ImportFromModel(projectNews);
+
+            return View(vl);
         }
 
         // POST: ProjectNews/Delete/5

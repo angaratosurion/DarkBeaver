@@ -2,13 +2,11 @@ namespace DarkBeaver.Migrations
 {
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using BlackCogs.Data;
     using BlackCogs.Data.Models;
-    using DarkBeaver.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DarkBeaver.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DarkBeaver.Data.Models.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -19,7 +17,7 @@ namespace DarkBeaver.Migrations
 
         }
 
-        protected override void Seed(DarkBeaver.Models.ApplicationDbContext context)
+        protected override void Seed(DarkBeaver.Data.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DarkBeaver.Models;
 using DarkBeaver.Managers;
-using DarkBeaver.ViewModels;
+using DarkBeaver.Data.Models;
+using DarkBeaver.Data.ViewModels;
 
 namespace DarkBeaver.Controllers
 {

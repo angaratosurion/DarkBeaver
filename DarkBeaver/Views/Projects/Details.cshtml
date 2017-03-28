@@ -1,4 +1,4 @@
-﻿@model DarkBeaver.ViewModels.ViewProject
+﻿@model  DarkBeaver.Data.ViewModels.ViewProject
 
 @{
     ViewBag.Title = "Details";
@@ -53,6 +53,6 @@
     @Html.ActionLink("Edit", "EditProject", new { id = Model.Id }) |
     @Html.ActionLink("Releses", "Index", "FileReleases", new { projectid = Model.Id }, htmlAttributes: null)|
     @Html.ActionLink("Bugs", "Index", "Bugs", new { projectid = Model.Id }, htmlAttributes: null)|
-    @Html.ActionLink("News", "GetNewsByProjectsId", "ProjectNews", new { id = Model.Id }, htmlAttributes: null)|
+    @Html.ActionLink("News", "GetNewsByProjectId", "ProjectNews", new { id = Model.Id }, htmlAttributes: null)|
     @Html.ActionLink("Back to List", "Index")
 </p>

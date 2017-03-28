@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using BlackCogs.Data.Models;
- 
- 
-using DarkBeaver.Models;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Managers
 {
@@ -32,14 +28,14 @@ namespace DarkBeaver.Managers
             }
 
         }
-        public List<ProjectNews> ListByProjectId(int? id)
+        public List<ProjectNews> ListByProjectId(int id)
         {
             try
             {
                 List<ProjectNews> ap = null,news;
                 if (id != null)
                 { ap = new List<ProjectNews>();
-                    news = this.db.ProjectNews.Where(x => x.Project.Id == id).ToList();
+                    news = this.db.ProjectNews.Where(x => x.Project == id).ToList();
                      if ( news !=null)
                     {
                         ap = news;
@@ -70,7 +66,7 @@ namespace DarkBeaver.Managers
                 ApplicationUser usr=db.Users.First(m => m.UserName == user);
                 if (usr != null)
                 {
-                    projectNews.Author = usr;
+                    projectNews.Author = usr.Id;
                     db.ProjectNews.Add(projectNews);
                     db.SaveChanges();
                     ap = projectNews;
@@ -129,7 +125,7 @@ namespace DarkBeaver.Managers
               catch (Exception ex){CommonTools.ErrorReporting(ex);  }
 
         }
-        public void DeleteByProjectId(int? id)
+        public void DeleteByProjectId(int id)
         {
             try
             {

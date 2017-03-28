@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using DarkBeaver.Models;
+using DarkBeaver.Data.Models;
 using BlackCogs.Data.Models;
 using BlackCogs.Data;
 

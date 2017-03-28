@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlackCogs;
 using BlackCogs.Data.Models;
 using BlackCogs.Managers;
 using Microsoft.AspNet.Identity.EntityFramework;
-using DarkBeaver.Models;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Managers
 {

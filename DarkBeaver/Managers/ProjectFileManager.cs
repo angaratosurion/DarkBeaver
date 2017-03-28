@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
- 
-using DarkBeaver.Models;
 using System.IO;
- 
+
 using System.Data.Entity;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Managers
 {
 
-    
+
     public class ProjectFileManager
     {
          private ApplicationDbContext db =Statics.db;

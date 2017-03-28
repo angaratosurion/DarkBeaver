@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using DarkBeaver.Managers;
-using DarkBeaver.Models;
-using DarkBeaver.ViewModels;
+using DarkBeaver.Data.ViewModels;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Controllers
 {
@@ -19,20 +14,32 @@ namespace DarkBeaver.Controllers
     public class ProjectsController : Controller
     {
         // private ApplicationDbContext db = new ApplicationDbContext();
-        DarkBeaverManager mngr = Statics.mngr;
+        ProjectsManager mngr = Statics.mngr;
 
         // GET: DarkBeaver
         public ActionResult Index()
         {
-            var prolst = mngr.List();
-            List<ViewProject> vproj = new List<ViewProject>();
-            foreach( var p in prolst)
+
+            try
             {
-                ViewProject vp = new ViewProject();
-                vp.ImportFromModel(p);
-                vproj.Add(vp);
+                var prolst = mngr.List();
+                List<ViewProject> vproj = new List<ViewProject>();
+
+                foreach (var p in prolst)
+                {
+                    ViewProject vp = new ViewProject();
+                    vp.ImportFromModel(p);
+                    vproj.Add(vp);
+                }
+                return View(vproj);
             }
-            return View(vproj);
+            catch (Exception ex)
+            {
+
+                CommonTools.ErrorReporting(ex);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
+
         }
 
         // GET: DarkBeaver/Details/5

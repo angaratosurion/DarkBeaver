@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
-using BlackCogs;
 using BlackCogs.Data.Models;
 using MultiPlex.Core.Data.Models;
 using DarkBeaver.Managers;
-using DarkBeaver.ViewModels;
 using MultiPlex.Core.Managers;
 using System.Net;
+using DarkBeaver.Data.ViewModels;
+using DarkBeaver.Data.Models;
 
 namespace DarkBeaver.Controllers
 {
@@ -22,7 +19,7 @@ namespace DarkBeaver.Controllers
     {
         ProjectUserManager usremngr = new ProjectUserManager();
         WikiManager wkmngr = MultiPlex.Core.CommonTools.wkmngr;
-        DarkBeaverManager promgnr = new DarkBeaverManager();
+        ProjectsManager promgnr = new ProjectsManager();
         #region AdminPanel
         [Authorize(Roles = "Administrators")]
         public ActionResult FullDetails(string username)
@@ -56,7 +53,7 @@ namespace DarkBeaver.Controllers
                 var projbymembs = this.promgnr.ListWikiByUser(username);
                 if ( projbymembs==null)
                 {
-                    projbymembs = new List<Models.Project>();
+                    projbymembs = new List<Project>();
                 }
                 fulusr.ProjectAsMember = projbymembs;
 
@@ -94,7 +91,7 @@ namespace DarkBeaver.Controllers
                 var projbymembs = this.promgnr.ListWikiByUser(username);
                 if (projbymembs == null)
                 {
-                    projbymembs = new List<Models.Project>();
+                    projbymembs = new List<Project>();
                 }
                 fulusr.ProjectAsMember = projbymembs;
                 return View(fulusr);
